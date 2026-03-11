@@ -5,7 +5,7 @@
     `MLwrapj`=list(
         `type`="software", 
         `author`="Mart\u00EDnez-Garc\u00EDa, J., Monta\u00F1o, J. J., & Ses\u00E9, A.", 
-        `year`=2025, 
+        `year`=2026, 
         `title`="MLwrapj: Machine Learning for Everyone", 
         `publisher`="(Version 0.0.0) [jamovi module]. URL https://github.com/JMartinezGarcia/MLwrapj", 
         `url`="https://github.com/JMartinezGarcia/EasyML"), 

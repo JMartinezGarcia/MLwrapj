@@ -8,8 +8,8 @@ children:
     margin: large
     stretchFactor: 1
     children:
-      - type: CheckBox
-        name: disable
+      - type: ActionButton
+        name: run
       - type: VariableSupplier
         persistentItems: false
         stretchFactor: 1
@@ -43,7 +43,7 @@ children:
         children:
           - type: Supplier
             name: covsSupplier
-            label: Continuous Features
+            label: Components
             persistentItems: false
             stretchFactor: 1
             format: variables
@@ -59,7 +59,7 @@ children:
                       type: VariableLabel
           - type: Supplier
             name: factorsSupplier
-            label: Categorical Features
+            label: Components
             persistentItems: false
             stretchFactor: 1
             format: variables
@@ -644,10 +644,30 @@ children:
         stretchFactor: 1
         children:
           - type: LayoutBox
+            style: list
             margin: large
             children:
               - type: Label
-                label: <b> Permutation Feature Importance </b>
+                label: <b> Select Dataset </b>            
+              - type: RadioButton
+                name: data_label_SA
+                optionName: new_data_SA
+                optionPart: train
+              - name: new_data_SA_test
+                type: RadioButton
+                optionName: new_data_SA
+                optionPart: test
+          - type: LayoutBox
+            style: list
+            margin: large
+            children:
+              - type: Label
+                label: <b> Feature Importance </b>
+          - type: LayoutBox
+            margin: large
+            children:
+              - type: Label
+                label: Permutation Feature Importance
               - type: LayoutBox
                 style: list
                 margin: large
@@ -655,7 +675,7 @@ children:
                   - type: CheckBox
                     name: pfi
               - type: Label
-                label: <b> SHAP Values </b>
+                label: SHAP Values
               - type: LayoutBox
                 style: inline
                 margin: large
@@ -673,7 +693,7 @@ children:
                     name: shap_swarm
                     enable: (show_shap)
               - type: Label
-                label: <b> Olden's Method &nbsp; &nbsp; &nbsp;</b>
+                label: Olden's Method &nbsp; &nbsp; &nbsp;
               - type: LayoutBox
                 style: list
                 margin: large
@@ -682,7 +702,7 @@ children:
                     name: olden
                     enable: (show_olden)
               - type: Label
-                label: <b> Sobol-Jansen Method </b>
+                label: Sobol-Jansen Method
               - type: LayoutBox
                 style: list
                 margin: large
@@ -690,9 +710,135 @@ children:
                   - type: CheckBox
                     name: sobol
                     enable: (show_sobol)
+          - type: LayoutBox
+            style: list
+            margin: large
+            children:
+              - type: Label
+                label: <b> Feature Interaction </b>
+          - type: LayoutBox
+            style: list
+            margin: large
+            children:
+              - type: Label
+                label: Friedman's H-statistic
+              - type: LayoutBox
+                style: inline
+                margin: large
+                children:
+                  - type: CheckBox
+                    name: h2_total
+                  - type: CheckBox
+                    name: h2_pair_norm
+                  - type: CheckBox
+                    name: h2_pair_raw
       - type: CollapseBox
         collapsed: true
-        label: Save Results
+        label: Functional Dependence Plots
+        style: list
+        stretchFactor: 1
+        children:
+          - type: LayoutBox
+            style: list
+            margin: large
+            children:
+              - type: Label
+                label: <b> Select Dataset </b>            
+              - type: RadioButton
+                name: data_label_FI
+                optionName: new_data_FI
+                optionPart: train
+              - name: new_data_FI_test
+                type: RadioButton
+                optionName: new_data_FI
+                optionPart: test
+          - type: ModeSelector
+            name: mode2
+            stretchFactor: 1
+            children:
+              - type: Content
+                name: pdp_mode
+                children:
+                  - type: LayoutBox
+                    margin: large
+                    stretchFactor: 1
+                    children:
+                      - type: VariableSupplier
+                        name: PDPSupplier
+                        label: Features
+                        populate: manual
+                        stretchFactor: 1
+                        persistentItems: true
+                        events:
+                          update: ./regression::onUpdate_PDPSupplier
+                        children:
+                          - type: TargetLayoutBox
+                            stretchFactor: 1
+                            children:
+                              - type: ListBox
+                                name: pdp_terms
+                                height: large
+                                addButton: Add New Plot
+                                selectable: true
+                                events:
+                                  listItemAdded: ./regression::onChange_pdp_terms
+                                  listItemRemoved: ./regression::onChange_pdp_terms
+                                  change: ./regression::onChange_pdp_terms
+                                template:
+                                  type: LayoutBox
+                                  margin: normal
+                                  targetArea: true
+                                  children:
+                                    - type: VariablesListBox
+                                      name: pdpList
+                                      isTarget: true
+                                      valueFilter: unique
+                                      height: auto
+                                      ghostText: drag variables here
+                      - type: CheckBox
+                        name: show_ice
+              - type: Content
+                name: ale_mode
+                children:
+                  - type: LayoutBox
+                    margin: large
+                    stretchFactor: 1
+                    children:
+                      - type: VariableSupplier
+                        name: ALESupplier
+                        populate: manual
+                        label: Features
+                        stretchFactor: 1
+                        persistentItems: true
+                        events:
+                          update: ./regression::onUpdate_ALESupplier
+                        children:
+                          - type: TargetLayoutBox
+                            stretchFactor: 1
+                            children:
+                              - type: ListBox
+                                name: ale_terms
+                                height: large
+                                addButton: Add New Plot
+                                selectable: true
+                                events:
+                                  listItemAdded: ./regression::onChange_ale_terms
+                                  listItemRemoved: ./regression::onChange_ale_terms
+                                  change: ./regression::onChange_ale_terms
+                                template:
+                                  type: LayoutBox
+                                  margin: normal
+                                  targetArea: true
+                                  children:
+                                    - type: VariablesListBox
+                                      name: aleList
+                                      isTarget: true
+                                      valueFilter: unique
+                                      height: auto
+                                      ghostText: drag variables here
+      - type: CollapseBox
+        collapsed: true
+        label: Save
         style: list
         stretchFactor: 1
         children:
@@ -700,5 +846,5 @@ children:
             name: residuals
           - type: Output
             name: predictions
-          - type: Output    
+          - type: Output
             name: dataset_id
