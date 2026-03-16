@@ -1,0 +1,26 @@
+# macOS
+.DS_Store
+
+# R build artifacts
+.Rhistory
+.RData
+.Rproj.user
+.Ruserdata
+
+# R package build outputs
+*.tar.gz
+*.Rcheck
+
+# Jamovi module build
+*.jmo
+
+# temporary build folders
+build/
+
+# compiled objects
+*.o
+*.so
+*.dll
+
+# logs
+*.log
