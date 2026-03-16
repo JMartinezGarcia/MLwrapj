@@ -1,4 +1,0 @@
-safe_load_file          Safe load a safetensors file
-safe_save_file          Writes a list of tensors to the safetensors
-                        format
-safetensors             Low level control over safetensors files
