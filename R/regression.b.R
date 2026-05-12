@@ -1271,7 +1271,7 @@ RegressionClass <- R6::R6Class(
 
             if (self$options$dataset_id && self$results$dataset_id$isNotFilled()){
 
-                test_id <- self$results$model$data_id$test_data_id
+                test_id <- self$results$model$data$data_id$test_id
 
                 dataset_id <- rep("Train", nrow(self$data))
 
