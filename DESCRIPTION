@@ -52,10 +52,9 @@ Imports: jmvcore (>= 0.8),
     ranger,
     kernlab,
     xgboost,
-    shapr,
     innsight,
     sensitivity,
     torch,
     nnet
-Remotes: JMartinezGarcia/MLwrap
+Remotes: JMartinezGarcia/MLwrap, martinju/shapr@v1.0.8
 RoxygenNote: 7.3.2
