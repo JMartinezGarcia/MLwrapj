@@ -6,7 +6,7 @@ BinaryClassificationOptions <- if (requireNamespace("jmvcore", quietly=TRUE)) R6
     inherit = jmvcore::Options,
     public = list(
         initialize = function(
-            run = NULL,
+            run = FALSE,
             seed = 42,
             dep = NULL,
             dep_level = NULL,
@@ -3048,7 +3048,7 @@ BinaryClassificationBase <- if (requireNamespace("jmvcore", quietly=TRUE)) R6::R
 #'
 #' @export
 BinaryClassification <- function(
-    run,
+    run = FALSE,
     seed = 42,
     data,
     dep = NULL,

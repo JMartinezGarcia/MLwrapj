@@ -49,6 +49,7 @@ Imports: jmvcore (>= 0.8),
     tibble,
     tidyverse,
     brulee,
+    shapr,
     ranger,
     kernlab,
     xgboost,
@@ -56,5 +57,8 @@ Imports: jmvcore (>= 0.8),
     sensitivity,
     torch,
     nnet
-Remotes: JMartinezGarcia/MLwrap, martinju/shapr@v1.0.8
+Remotes: 
+  JMartinezGarcia/MLwrap
 RoxygenNote: 7.3.2
+
+

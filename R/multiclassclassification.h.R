@@ -6,7 +6,7 @@ MulticlassClassificationOptions <- if (requireNamespace("jmvcore", quietly=TRUE)
     inherit = jmvcore::Options,
     public = list(
         initialize = function(
-            run = NULL,
+            run = FALSE,
             seed = 42,
             dep = NULL,
             covs = NULL,
@@ -3294,7 +3294,7 @@ MulticlassClassificationBase <- if (requireNamespace("jmvcore", quietly=TRUE)) R
 #' @export
 MulticlassClassification <- function(
     data,
-    run,
+    run = FALSE,
     seed = 42,
     dep = NULL,
     covs = NULL,
