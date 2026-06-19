@@ -58,7 +58,7 @@ Imports: jmvcore (>= 0.8),
     torch,
     nnet
 Remotes: 
-  JMartinezGarcia/MLwrap
+  JMartinezGarcia/MLwrap@7e858a242a339fce54aa7d44d6ffab4309212339
 RoxygenNote: 7.3.2
 
 
